@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Match Stats Pro - 1536x2048 HD</title>
+    <title>Match Stats Pro - High Contrast Text</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         body { background: #111; color: white; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin: 0; padding: 10px; display: flex; flex-direction: column; align-items: center; }
@@ -47,18 +47,19 @@
         .slot-list { display: flex; flex-direction: column; gap: 2px; }
         .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
 
-        .slot { height: 13.5px !important; display: flex; align-items: center; overflow: hidden; }
-        .g-name { flex: 1; text-align: center; overflow: hidden; white-space: nowrap; font-size: 11.5px; font-weight: 600; color: #fff; line-height: 13.5px; }
-        .g-time { width: 30px; color: #666; font-size: 6.5px; text-align: right; margin-left: 2px; flex-shrink: 0; font-weight: 300; line-height: 13.5px; }
+        /* 時間を白（高コントラスト）に修正 */
+        .slot { height: 16px !important; display: flex; align-items: center; overflow: hidden; margin-bottom: 1px; }
+        .g-name { flex: 1; text-align: center; overflow: hidden; white-space: nowrap; font-size: 14px; font-weight: 500; color: #fff; line-height: 16px; }
+        .g-time { width: 22px; color: #fff; opacity: 0.8; font-size: 5.5px; text-align: right; flex-shrink: 0; font-weight: 400; line-height: 16px; margin-left: 2px; }
 
-        .sub-time { width: 18px; color: #666; font-size: 6.5px; flex-shrink: 0; text-align: left; font-weight: 300; line-height: 13.5px; }
-        .sub-names { flex: 1; display: flex; align-items: center; gap: 2px; overflow: hidden; height: 100%; }
-        .sub-p { flex: 1; overflow: hidden; white-space: nowrap; text-align: center; font-size: 11.5px; font-weight: 600; color: #fff; line-height: 13.5px; }
-        .arrow { font-size: 6px; color: #333; margin: 0 1px; }
+        .sub-time { width: 15px; color: #fff; opacity: 0.8; font-size: 5.5px; flex-shrink: 0; text-align: left; font-weight: 400; line-height: 16px; }
+        .sub-names { flex: 1; display: flex; align-items: center; gap: 1px; overflow: hidden; height: 100%; }
+        .sub-p { flex: 1; overflow: hidden; white-space: nowrap; text-align: center; font-size: 13.5px; font-weight: 500; color: #fff; line-height: 16px; }
+        .arrow { font-size: 6px; color: #444; flex-shrink: 0; }
 
-        .c-box { width: 7px; height: 9px; border-radius: 1px; background: #222; margin: 0 4px; cursor: pointer; flex-shrink: 0; border: 0.5px solid #000; }
-        .c-box.yellow { background: #FFD700; border: none; }
-        .c-box.red { background: #FF3B30; border: none; }
+        .c-box { width: 7px; height: 9px; border-radius: 1px; background: #000; margin: 0 4px; cursor: pointer; flex-shrink: 0; border: none; }
+        .c-box.yellow { background: #FFD700; }
+        .c-box.red { background: #FF3B30; }
 
         .ctrls { display: flex; gap: 1px; flex-shrink: 0; height: 100%; align-items: center; }
         .m-btn { background: #222; color: #555; border: none; font-size: 6px; padding: 1px 2px; cursor: pointer; border-radius: 2px; height: 12px; }
@@ -147,9 +148,9 @@ function init() {
     document.getElementById('al').innerHTML = Array(11).fill(pRow).join('');
     
     ['h', 'a'].forEach(s => {
-        document.getElementById(`${s}g-list`).innerHTML = Array(8).fill(0).map(() => `<div class="slot"><div class="g-name" contenteditable="true" oninput="autoShrink(this, 50, 11.5)"></div><div class="g-time" contenteditable="true" oninput="autoShrink(this, 30, 6.5)"></div></div>`).join('');
-        document.getElementById(`${s}s-list`).innerHTML = Array(6).fill(0).map(() => `<div class="slot"><div class="sub-time" contenteditable="true" oninput="autoShrink(this, 18, 6.5)"></div><div class="sub-names"><div class="sub-p" contenteditable="true" oninput="autoShrink(this, 62, 11.5)"></div><span class="arrow">→</span><div class="sub-p" contenteditable="true" oninput="autoShrink(this, 62, 11.5)"></div></div></div>`).join('');
-        document.getElementById(`${s}c-list`).innerHTML = Array(8).fill(0).map(() => `<div class="slot"><div class="sub-time" contenteditable="true" oninput="autoShrink(this, 18, 6.5)"></div><div class="c-box" onclick="toggleCard(this)"></div><div class="g-name" contenteditable="true" oninput="autoShrink(this, 48, 11.5)"></div></div>`).join('');
+        document.getElementById(`${s}g-list`).innerHTML = Array(8).fill(0).map(() => `<div class="slot"><div class="g-name" contenteditable="true" oninput="autoShrink(this, 75, 14)"></div><div class="g-time" contenteditable="true" oninput="autoShrink(this, 22, 5.5)"></div></div>`).join('');
+        document.getElementById(`${s}s-list`).innerHTML = Array(6).fill(0).map(() => `<div class="slot"><div class="sub-time" contenteditable="true" oninput="autoShrink(this, 15, 5.5)"></div><div class="sub-names"><div class="sub-p" contenteditable="true" oninput="autoShrink(this, 80, 13.5)"></div><span class="arrow">→</span><div class="sub-p" contenteditable="true" oninput="autoShrink(this, 80, 13.5)"></div></div></div>`).join('');
+        document.getElementById(`${s}c-list`).innerHTML = Array(8).fill(0).map(() => `<div class="slot"><div class="sub-time" contenteditable="true" oninput="autoShrink(this, 15, 5.5)"></div><div class="c-box" onclick="toggleCard(this)"></div><div class="g-name" contenteditable="true" oninput="autoShrink(this, 75, 14)"></div></div>`).join('');
     });
 }
 
@@ -197,8 +198,6 @@ function parseMember() {
 function takePhoto() {
     const area = document.getElementById('capture-area');
     document.querySelectorAll('.ctrls').forEach(c => c.style.display = 'none');
-    
-    // 1536 / 432 = 3.5555...
     const targetScale = 1536 / area.offsetWidth;
 
     html2canvas(area, {
